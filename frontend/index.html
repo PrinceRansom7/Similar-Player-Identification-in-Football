@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Player Scouting — Recommendation System</title>
+    <link rel="stylesheet" href="/static/css/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <header class="app-header">
+        <div class="title-row">
+          <div class="logo">⚽🔍</div>
+          <h1>Similar Player Identification</h1>
+        </div>
+        <p class="subtitle">Find your favorite player & more!!</p>
+      </header>
+
+      <div class="search-area">
+        <input
+          id="searchBox"
+          placeholder="Type player name..."
+          autocomplete="off"
+        />
+        <div id="suggestions" class="suggestions"></div>
+      </div>
+
+      <div class="controls">
+        <label
+          >K:
+          <input
+            id="kInput"
+            type="number"
+            min="1"
+            max="50"
+            value="10"
+            class="dark-input"
+        /></label>
+
+        <label
+          >League:
+          <select id="leagueFilter" class="dark-select">
+            <option value="">All Leagues</option>
+          </select>
+        </label>
+
+        <label
+          >Position:
+          <select id="positionFilter" class="dark-select">
+            <option value="">All Positions</option>
+          </select>
+        </label>
+
+        <label
+          >Age:
+          <input
+            id="minAge"
+            class="dark-input"
+            type="number"
+            placeholder="min"
+          />
+          -
+          <input
+            id="maxAge"
+            class="dark-input"
+            type="number"
+            placeholder="max"
+          />
+        </label>
+
+        <button id="getSimilarBtn">Get Similar</button>
+      </div>
+
+      <div class="stat-panels">
+        <div id="inputPlayerPanel" class="stat-panel">
+          <h3>Input Player</h3>
+          <div id="inputPlayerContent">
+            No player selected. Search above and choose a player.
+          </div>
+        </div>
+
+        <div id="selectedPlayerPanel" class="stat-panel">
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            "
+          >
+            <h3>Selected Players</h3>
+            <div style="display: flex; gap: 8px">
+              <button
+                id="toggleAllFeaturesBtn"
+                title="Show all features for all boxes"
+                class="btn-green"
+              >
+                Show ALL features
+              </button>
+            </div>
+          </div>
+          <div id="selectedMultipleHolder" class="selected-multiple-holder">
+            Select players and click "Compare selected" to populate here.
+          </div>
+        </div>
+      </div>
+
+      <div class="content-row">
+        <div id="leftCol" class="left-col">
+          <h2>Similar Players</h2>
+          <p class="table-description">
+            These are the players most similar to your selected player based on
+            their performance, style of play, and statistical profile.
+          </p>
+          <div id="similarTableHolder"></div>
+          <div
+            style="
+              display: flex;
+              gap: 8px;
+              justify-content: center;
+              margin-top: 10px;
+            "
+          >
+            <button id="compareSelectedBtn">Compare selected</button>
+            <button id="removeSelectionBtn" class="btn-red">
+              Remove selection
+            </button>
+          </div>
+        </div>
+
+        <div id="rightCol" class="right-col">
+          <h2>Radar Comparison</h2>
+          <div class="radar-outer">
+            <div class="radar-card">
+              <canvas id="radarChartDefault" width="700" height="700"></canvas>
+            </div>
+          </div>
+          <div id="legendContainer" class="legend-container"></div>
+
+          <!-- AI report collapsible -->
+          <div class="ai-collapsible">
+            <button id="toggleAiReportBtn" class="btn-toggle">
+              Show AI Report
+            </button>
+            <div id="aiReportBox" class="ai-report" style="display: none"></div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        id="customTooltip"
+        class="custom-tooltip"
+        style="
+          display: none;
+          position: fixed;
+          z-index: 99999;
+          pointer-events: none;
+        "
+      ></div>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+  </body>
+</html>

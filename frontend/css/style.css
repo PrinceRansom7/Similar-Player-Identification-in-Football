@@ -1,0 +1,386 @@
+/* ============================================
+   GLOBAL PAGE + THEME
+============================================ */
+body {
+  font-family: Inter, system-ui;
+  background: #071024;
+  color: #e6eef8;
+  margin: 14px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ============================================
+   HEADER
+============================================ */
+.app-header {
+  text-align: center;
+  margin-bottom: 12px;
+}
+.title-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+.logo {
+  font-size: 28px;
+}
+.subtitle {
+  color: #9aa3b2;
+}
+
+/* ============================================
+   SEARCH
+============================================ */
+.search-area {
+  max-width: 900px;
+  margin: 0 auto 12px auto;
+  position: relative;
+}
+
+.search-area input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 2px solid rgba(255, 255, 255, 0.06);
+  background: #0b1722;
+  color: #e6eef8;
+}
+
+.suggestions {
+  position: absolute;
+  width: 100%;
+  z-index: 9999;
+  margin-top: 6px;
+}
+
+.sugg {
+  padding: 10px;
+  background: #081220;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 5px;
+  color: #e6eef8;
+}
+
+.sugg:hover {
+  background: #162439;
+}
+
+/* ============================================
+   FILTER CONTROLS
+============================================ */
+.controls {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.dark-select,
+.dark-input {
+  background: #0b1722;
+  color: #e6eef8;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 6px;
+  padding: 6px 10px;
+}
+
+/* ============================================
+   BUTTONS
+============================================ */
+button {
+  background: #4f46e5;
+  color: white;
+  padding: 8px 14px;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+button:hover {
+  background: #4338ca;
+}
+
+.btn-green {
+  background: #10b981;
+}
+
+.btn-green:hover {
+  background: #059669;
+}
+
+.btn-red {
+  background: #ef4444;
+}
+
+.btn-red:hover {
+  background: #dc2626;
+}
+
+/* ============================================
+   PLAYER INFO PANELS
+============================================ */
+.stat-panels {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.stat-panel {
+  background: #07101a;
+  padding: 12px;
+  border-radius: 8px;
+  width: 100%;
+}
+
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  margin: 6px 0;
+}
+
+.stat-key {
+  color: #9aa3b2;
+}
+
+/* ============================================
+   RADAR LAYOUT
+============================================ */
+.content-row {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.left-col {
+  flex: 0 0 45%;
+}
+
+.right-col {
+  flex: 1;
+}
+
+.radar-outer {
+  background: #07101a;
+  padding: 14px;
+  border-radius: 14px;
+  display: flex;
+  justify-content: center;
+}
+
+.radar-card {
+  background: #07101a;
+  padding: 12px;
+  border-radius: 14px;
+  display: flex;
+  justify-content: center;
+}
+
+/* White radar canvas */
+#radarChartDefault {
+  background: white !important;
+  border-radius: 10px;
+  transition: box-shadow 0.25s ease;
+}
+
+/* ============================================
+   SIMILAR PLAYER TABLE
+============================================ */
+.similar-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #07101a;
+  color: #e6eef8;
+}
+
+.similar-table th,
+.similar-table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.similar-table th {
+  color: #b8c6d8;
+}
+
+.selected-row {
+  background: rgba(79, 70, 229, 0.15) !important;
+}
+
+.similar-table input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #4f46e5;
+}
+
+/* ============================================
+   MULTI-PLAYER COMPARE BOXES
+============================================ */
+.selected-multiple-holder {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.compare-box {
+  display: inline-block;
+  min-width: 260px;
+  background: #07101a;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+/* ============================================
+   EXTERNAL TOOLTIP (Chart.js)
+   — Description first
+   — Left color bar (thin, solid)
+   — Sticky behaviour supported by JS
+============================================ */
+.chartjs-tooltip {
+  position: fixed;
+  display: none;
+  opacity: 0;
+  z-index: 999999;
+  min-width: 240px;
+  max-width: 340px;
+  padding: 12px;
+  border-radius: 8px;
+
+  background: rgba(12, 12, 12, 0.96);
+  color: white;
+  font-size: 14px;
+  line-height: 1.35;
+
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.55);
+  transition: opacity 0.15s ease;
+  pointer-events: auto; /* Allows sticky tooltip */
+}
+
+/* Tooltip Title (Feature Name) */
+.tt-title {
+  font-weight: 700;
+  margin-bottom: 6px;
+  font-size: 15px;
+  color: #fff;
+}
+
+/* Feature Description */
+.tt-desc {
+  color: #dce1e8;
+  font-size: 13px;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+/* Separator */
+.tt-sep {
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.15);
+  margin: 8px 0;
+}
+
+/* Player stat rows container */
+.tt-rows {
+  margin-top: 6px;
+}
+
+/* Each stat row */
+.tt-row {
+  display: flex;
+  align-items: center;
+  padding: 4px 0;
+  gap: 10px;
+}
+
+/* Thin color bar on left (Option A1) */
+.tt-leftbar {
+  width: 3px;
+  height: 100%;
+  border-radius: 0;
+  flex-shrink: 0;
+}
+
+/* Player name */
+.tt-name {
+  flex: 1;
+  color: #f2f4f7;
+  font-size: 14px;
+}
+
+/* Player value */
+.tt-val {
+  font-weight: 600;
+  font-size: 14px;
+  color: #ffffff;
+}
+
+/* ============================================
+   SMALL TOOLTIP (stat panel hover)
+============================================ */
+.custom-tooltip {
+  position: fixed;
+  display: none;
+  pointer-events: none;
+  z-index: 99999;
+  padding: 8px 12px;
+  max-width: 260px;
+
+  background: rgba(10, 10, 10, 0.9);
+  color: white;
+  border-radius: 6px;
+
+  font-size: 13px;
+  line-height: 1.3;
+
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+}
+
+/* Title for small tooltip */
+.tt-title-small {
+  font-size: 14px;
+  color: white;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.tt-desc-small {
+  font-size: 13px;
+  color: #dfe5ec;
+}
+
+/* ============================================
+   AI REPORT
+============================================ */
+.ai-report {
+  background: #0b1220;
+  padding: 12px;
+  border-radius: 8px;
+  margin-top: 12px;
+  max-height: 350px;
+  overflow-y: auto;
+}
+
+.btn-toggle {
+  background: #111827;
+  color: white;
+}
+
+/* ============================================
+   DESCRIPTION ABOVE TABLE
+============================================ */
+.table-description {
+  color: #cbd5e1;
+  font-size: 14px;
+  margin-bottom: 10px;
+  opacity: 0.9;
+}
